@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon  ./bin/www",
+    "start": "nodemon --exec npm run babel-node -- ./bin/www",
     "babel-node": "babel-node --presets=es2015 --ignore='foo|bar|baz'"
   },
   "dependencies": {
