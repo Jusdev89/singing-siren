@@ -35,14 +35,7 @@ describe ( 'SimpleSelect', () => {
 
       expect( query.toString() ).toEqual( 'SELECT * FROM blargathon WHERE id=3 AND a=2')
     })
-  })
+ })
 })
 
 
-/*
-*****jrob, how the fuck do we make this work w reset password?
-edit bio?
-general crud user things
-how to test bio editing
-how to test set string0
-*/
