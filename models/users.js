@@ -1,4 +1,4 @@
-class Users {
+class UsersSql {
   constructor ( options={}){
     this.user = options[ 'id' ]
     this.password = options[ 'userPassword' ]
@@ -22,4 +22,4 @@ class Users {
   }
 }
 
-export default Users
+export default UsersSql

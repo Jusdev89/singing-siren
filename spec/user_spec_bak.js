@@ -1,4 +1,4 @@
-import Users from '../models/users'
+import SimpleSelect from '../models/simple_select'
 
 describe ( 'Users', () => {
   it ('gets all users', () => {
@@ -22,10 +22,3 @@ describe ( 'Users', () => {
 })
 
 
-/*
-*****jrob, how the fuck do we make this work w reset password?
-edit bio?
-general crud user things
-how to test bio editing
-how to test set string0
-*/
