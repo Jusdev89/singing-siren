@@ -7,51 +7,42 @@ class SimpleJoin {
     }
 
     this.table = table
-    this.filter = options.where || []
     this.fields = options.fields || []
-    this.id = options.in.id || []
+    this.filter = options.where || []
+
+    this.combine = options.join[0] || []
+    this.on = options.on || []
+    this.id = options.in || []
   }
-  
+
   toString() {
-    return `SELECT ${this.sqlFields()} FROM ${this.table} ON ${this.where()} IN ${this.id}`
+    return `SELECT ${this.sqlFields()} FROM ${this.table} JOIN ${this.combine} ${this.onSql()} ${this.where()} IN ${this.id}`
   }
 
   sqlFields() {
-    if( this.fields.length === 0 ) {
-      return '*'
+    if(this.fields.length === 1) {
+
+      return `${this.fields[0]}.*`
     } else {
-      return this.fields.join( ', ' )
+      let arrfields = []
+
+      this.fields.map((value, index) => {
+        if(index > 0){
+          arrfields.push(value)
+        }
+      })
+
+      return `${this.fields[0]}.*, ${arrfields.join(',')}`
     }
+  }
+
+  onSql(){
+    return `ON ${this.on[0].eqlTo} = ${this.on[0].join_id}`
   }
 
   where() {
-    if( this.filter.length === 0 ) {
-      return ''
-    } else {
-      const clause = this.filter.map( object => {
-        return Object.keys( object ).map( key => `${key}=${object[key]}`)
-      }).reduce( (a, b) => a.concat( b ), [] )
-
-      return ` WHERE ${clause.join( ' AND ' )}`
-    }
+    return `WHERE ${this.filter[0].field_id}`
   }
-
-  On(){
-
-  }
-  
 }
 
 export default SimpleJoin
-
-/*
-
-SELECT genres.*, book_genres.book_id FROM book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id IN (stuff)
-
-
-SELECT authors.*, book_authors.book_id FROM book_authors ON authors.id = book_authors.author_id WHERE book_authors.book_id IN (stuff)
-SELECT book.*, book_favorites.user_id FROM book_favorites ON book.id = book_favorites.user_id WHERE book_favorites.book_id IN (stuff)
-
-
-
-*/
