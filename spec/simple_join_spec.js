@@ -27,19 +27,33 @@ describe ( 'SimpleJoin', () => {
       )
     })
 
-  it( 'returns a SELECT field.* SQL statement JOIN', () => {
-    const query = new SimpleJoin( 'genres',  {
-        fields: ['genres'],
-        join: ['book_genres'],
-        where: [{ field_id: 'book_genres.book_id' }],
-        on: [{join_id: 'book_genres.genre_id', eqlTo: 'genres.id'}],
-        in: 1
-      })
+    it( 'returns a SELECT field.* SQL statement JOIN', () => {
+      const query = new SimpleJoin( 'genres',  {
+          fields: ['genres'],
+          join: ['book_genres'],
+          where: [{ field_id: 'book_genres.book_id' }],
+          on: [{join_id: 'book_genres.genre_id', eqlTo: 'genres.id'}],
+          in: 1
+        })
 
-    expect( query.toString() ).toEqual(
-      `SELECT genres.* FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id IN 1`
-    )
-  })
+      expect( query.toString() ).toEqual(
+        `SELECT genres.* FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id IN 1`
+      )
+    })
+
+    it( 'returns a SELECT field.* SQL statement JOIN', () => {
+      const query = new SimpleJoin( 'books',  {
+          fields: ['books'],
+          join: ['book_authors'],
+          where: [{ field_id: 'book_authors.author_id' }],
+          on: [{join_id: 'book_authors.book_id', eqlTo: 'book.id'}],
+          in: 1
+        })
+
+      expect( query.toString() ).toEqual(
+        `SELECT books.* FROM books JOIN book_authors ON book.id = book_authors.book_id WHERE book_authors.author_id IN 1`
+      )
+    })
   })
 })
 
