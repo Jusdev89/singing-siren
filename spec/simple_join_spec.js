@@ -18,7 +18,7 @@ describe ( 'SimpleJoin', () => {
           fields: ['genres', 'book_genres.book_id'],
           join: ['book_genres'],
           where: [{ field_id: 'book_genres.book_id' }],
-          on: [{join_id: 'book_genres.genre_id', eqlTo: 'genres.id'}],
+          on: [ 'book_genres.genre_id', 'genres.id' ],
           in: 1
         })
 
@@ -32,7 +32,7 @@ describe ( 'SimpleJoin', () => {
           fields: ['genres'],
           join: ['book_genres'],
           where: [{ field_id: 'book_genres.book_id' }],
-          on: [{join_id: 'book_genres.genre_id', eqlTo: 'genres.id'}],
+          on: [ 'book_genres.genre_id', 'genres.id' ],
           in: 1
         })
 
@@ -46,7 +46,7 @@ describe ( 'SimpleJoin', () => {
           fields: ['books'],
           join: ['book_authors'],
           where: [{ field_id: 'book_authors.author_id' }],
-          on: [{join_id: 'book_authors.book_id', eqlTo: 'book.id'}],
+          on: [ 'book_authors.book_id', 'book.id' ],
           in: 1
         })
 

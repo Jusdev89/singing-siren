@@ -7,7 +7,7 @@ class SimpleInsert {
     }
 
     this.table = table
-    this.selector = options.selector || []
+    this.columns = options.columns || []
     this.values = options.values || []
   }
 
@@ -17,7 +17,7 @@ class SimpleInsert {
 
 
   insertInto(){
-    return `${this.table}(${this.selector.join(', ')})`
+    return `${this.table}(${this.columns.join(', ')})`
   }
 
   insertValues(){
