@@ -1,6 +1,6 @@
 import SimpleInsert from '../models/simple_insert'
 
-describe ( 'SimpleJoin', () => {
+describe ( 'SimpleInsert', () => {
   describe( '#constructor', () => {
     it( 'throws when no parameters are provided', () => {
       expect( () => new SimpleInsert() ).toThrow( 'Table parameter is required' )
@@ -14,7 +14,7 @@ describe ( 'SimpleJoin', () => {
   describe( '#toString', () => {
     it( 'returns a INSERT INTO xx for VALUES', () => {
       const query = new SimpleInsert( 'authors', { 
-        selector: [ 'img_url', 'name', 'bio', 'awesome'],
+        columns: [ 'img_url', 'name', 'bio', 'awesome'],
         values: ['www.somewhere.com', 'Joe Blow', 'Some Dude', 'Rachel']
       } )
 

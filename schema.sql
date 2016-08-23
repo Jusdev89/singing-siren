@@ -1,7 +1,7 @@
 -- CREATE TABLES
 
 --psql bookstore < schema.sql
-DROP TABLE IF EXISTS book_author, book_genre;
+
 DROP TABLE IF EXISTS books;
 CREATE TABLE books
 (
@@ -72,3 +72,66 @@ CREATE TABLE roles
   id SERIAL PRIMARY KEY,
   admin BOOLEAN --??????????????????????
 );
+
+INSERT INTO
+  books (title, description, img_url)
+VALUES 
+  ('White Fang', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Ender''s Game', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Kushiel''s Dart', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('The Golden Compass', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('The Subtle Knife', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Dune', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('A Scanner Darkly', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Good Omens', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Neuromancer', 'A SUPER GOOD BOOK', 'www.whatever.com'), 
+  ('1984', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Hyperion', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('Fahrenheit 451', 'A SUPER GOOD BOOK', 'www.whatever.com'),
+  ('The Left Hand of Darkness', 'A SUPER GOOD BOOK', 'www.whatever.com');
+
+INSERT INTO 
+  genres (genre)
+VALUES 
+  ('Young Adult'),
+  ('Sci Fi'),
+  ('Romance'),
+  ('Comedy'),
+  ('Fantasy'),
+  ('Space'),
+  ('Aliens'),
+  ('Strong Female Lead'),
+  ('Dystopia'),
+  ('Female Author'),
+  ('Classic');
+
+INSERT INTO 
+  users (name, bio, email, password, img_url)
+VALUES  
+  ('user1', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user2', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user3', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user4', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user5', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user6', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user27', 'So much bios!', 'email@email.com', 'password', 'www.thing.com'),
+  ('user28', 'So much bios!', 'email@email.com', 'password', 'www.thing.com');
+
+
+
+INSERT INTO 
+  authors (name, bio, img_url)
+VALUES  
+  ('Jack London', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Frank Herbert', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Jacqueline Carey', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Philip Pullman', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Orson Scott Card', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Philip K Dick', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Terry Prachett', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Neil Gaiman', 'a human who does stuff', 'www.imgurl.com/stuff'), 
+  ('William Gibson', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('George Orwell', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Dan Simmons', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Ray Bradbury', 'a human who does stuff', 'www.imgurl.com/stuff'),
+  ('Ursula K Le Guin', 'a human who does stuff', 'www.imgurl.com/stuff');

@@ -1,2 +1,6 @@
-extends ../layout.pug
-  img(src='/images/logo.png')
+extends ./layout.pug
+
+block content
+  for book in books
+    div.container
+      h1=book.title

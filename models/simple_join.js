@@ -20,24 +20,13 @@ class SimpleJoin {
   }
 
   sqlFields() {
-    if(this.fields.length === 1) {
-
-      return `${this.fields[0]}.*`
-    } else {
-      let arrfields = []
-
-      this.fields.map((value, index) => {
-        if(index > 0){
-          arrfields.push(value)
-        }
-      })
-
-      return `${this.fields[0]}.*, ${arrfields.join(',')}`
-    }
+    return this.fields.map( 
+      field => field.indexOf( '.' ) === -1 ? `${field}.*` : field 
+    ).join( ', ' )
   }
 
   onSql(){
-    return `ON ${this.on[0].eqlTo} = ${this.on[0].join_id}`
+    return `ON ${this.on[1]} = ${this.on[0]}`
   }
 
   where() {
