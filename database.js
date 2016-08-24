@@ -6,17 +6,18 @@ const pgp = require('pg-promise')();
 const db = pgp(connectionString);
 
 import SimpleSelect from './models/simple_select'
+import SimpleJoin from './models/simple_join'
+
 
 const Book = {
   all: () => db.any( (new SimpleSelect( 'books' )).toString() ),
   one: (id) => db.one( (new SimpleSelect( 'books',{ where: [{ id:id }]} )).toString() ),
-  getGenres: () => db.many(new SimpleJoin( 'books',  
+  getAuthors: () => db.many(new SimpleJoin( 'books',  
         {
           fields: ['books'],
           join: ['book_authors'],
           where: [{ field_id: 'book_authors.author_id' }],
-          on: [ 'book_authors.book_id', 'book.id' ],
-          in: 1
+          on: [ 'book_authors.book_id', 'book.id' ]
         }
       ), [1])
 }
