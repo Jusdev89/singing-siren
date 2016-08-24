@@ -1,6 +1,7 @@
 extends ./layout.pug
 
 block content
-  for book in books
-    div.container
-      h1=book.title
+  div.container.col-md-10
+    for book in books
+      div.container
+        p=book.title

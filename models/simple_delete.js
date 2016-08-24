@@ -1,4 +1,4 @@
-class SimpleUpdate {
+class SimpleDelete {
   constructor (table, options = {}){
     if( table === undefined  ) {
       throw 'Table parameter is required'
@@ -44,4 +44,4 @@ class SimpleUpdate {
   }
 }
 
-export default SimpleUpdate
+export default SimpleDelete
