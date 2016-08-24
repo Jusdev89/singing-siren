@@ -2,6 +2,10 @@ extends ./layout.pug
 
 block content
   div.container.col-md-10
+    p how do you get info from author, genre and books?
     for book in books
       div.container
+      .col-md-6
         p=book.title
+      .col-md-6
+        p=book.description
