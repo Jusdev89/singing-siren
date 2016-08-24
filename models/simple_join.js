@@ -16,7 +16,7 @@ class SimpleJoin {
   }
 
   toString() {
-    return `SELECT ${this.sqlFields()} FROM ${this.table} JOIN ${this.combine} ${this.onSql()} ${this.where()} IN ${this.id}`
+    return `SELECT ${this.sqlFields()} FROM ${this.table} JOIN ${this.combine} ${this.onSql()} ${this.where()} IN ($1:csv)`
   }
 
   sqlFields() {
