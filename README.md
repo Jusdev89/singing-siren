@@ -22,21 +22,21 @@ Creating this web application will provide exposure to:
 - [ ] Users can sign up and log into their account.
 - [ ] Users can refine search by genre & other methods. (faceted search)
 - [ ] Users can view book details on a book detail page, linked to from the listing or search pages
-- [ ] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
-- [ ] Test driven development for sql queries
+- [X] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions) **100% complete **
+- [X] Test driven development for sql queries **100% complete**
 
 
 ###Required
 
-- [ ] The artifact produced is properly licensed, preferably with the MIT license.
+- [X] The artifact produced is properly licensed, preferably with the MIT license.
 Quality Rubric
 
-- [ ] Code is well formatted without any linting errors
-- [ ] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
-- [ ] Functions are small and serve a single purpose
-- [ ] Code is well organized into a meaningful file structure
-- [ ] Code is reasonably tested with a test suite
-- [ ] Interface is user friendly
+- [X] Code is well formatted without any linting errors
+- [X] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
+- [X] Functions are small and serve a single purpose
+- [X] Code is well organized into a meaningful file structure
+- [X] Code is reasonably tested with a test suite
+- [X] Interface is user friendly
 
 
 ###Resources

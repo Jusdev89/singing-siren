@@ -2,10 +2,17 @@ extends ./layout.pug
 
 block content
   div.container.col-md-10
-    p how do you get info from author, genre and books?
     for book in books
       div.container
-      .col-md-6
-        p=book.title
-      .col-md-6
-        p=book.description
+        div.col-md-10
+          .col-md-2
+            img.bookListImg(src='http://bestanimations.com/Books/guy-man-reading-book-animation-1.gif')
+          .col-md-2
+            p=book.title
+          .col-md-1
+            p author
+          .col-md-1
+            p genres
+          .col-md-6
+            p=book.description
+            p Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? 
