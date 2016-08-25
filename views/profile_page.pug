@@ -2,7 +2,15 @@ extends ./layout.pug
 
 block content
   div.container.col-md-10
-    p=user.name
-    p=user.bio
-    p=user.email
-    p=user.name
+    if user.admin == t
+      p Oh hey you're an admin! Congratulations!!!!!
+      p=user.name
+      p=user.bio
+      p=user.email
+    else if user.admin == f
+      p Oh hey, i guess it's nice to see you again, lowly user.
+      p=user.name
+      p=user.bio
+      p=user.email
+    else 
+      p Please log in to view this page 

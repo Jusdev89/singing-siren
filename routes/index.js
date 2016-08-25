@@ -13,8 +13,8 @@ router.get('/test', (req, res) => {
   Book.getAuthors(2).then( books => res.json(books)).catch( err => res.json(err))
 })
 
-router.get('/:id', (req, res) => {
-  Book.one(req.params.id).then( book => res.render('book_details', {book})).catch( err => res.json(err))
-})
+// router.get('/:id', (req, res) => {
+//   Book.one(req.params.id).then( book => res.render('book_details', {book})).catch( err => res.json(err))
+// })
 
 module.exports = router;

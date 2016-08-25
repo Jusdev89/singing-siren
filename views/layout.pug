@@ -17,9 +17,7 @@ html
         li
           a(href="/") Home
         li
-          a(href="/books/new") Add a Book
-        li
-          a(href="/signin") Add a Book
+          a(href="/auth/login") Log In
     .col-md-2.col-sm-3.col-lg-2.col-xs-5
       h3.smSearchtxt Search Books
         form(action="/", method="get")
@@ -38,4 +36,5 @@ html
           div
             br
             input.btn.pull-right(type="submit", value="find")
+    .col-md-10.col-sm-9.col-lg-10.col-xs-5
     block content
