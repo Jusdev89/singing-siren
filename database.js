@@ -35,7 +35,16 @@ const Genre = Object.assign(
 )
 
 const User = Object.assign(
-  {},
+  {
+    find: (email, password) => {
+      const fields = [ 'id', 'email', 'name', 'bio', 'img_url' ]
+      const where = [ {email}, {password} ]
+
+      return db.one( 
+        (new SimpleSelect( 'users', { where, fields } )).toString()
+      )
+    }
+  },
   genericFunctions( 'users' )
 )
 
