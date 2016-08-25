@@ -34,7 +34,35 @@ class SimpleSelect {
       return ` WHERE ${clause.join( ' AND ' )}`
     }
   }
+
+  offset() {
+    //if total # of results is < 10 return result
+    //else return # of results 
+    //results / 10 = # of pages
+    //how get offset? (units - 1)*10
+    if( this.fields.length === 0 ) {
+      return ''
+    } else {
+
+
+
+      return ` LIMIT 10 OFFSET ${offset}`
+    }
+    // const resultTotal = results/10
+    // for ( i = 0, i <= resultTotal, i++){
+    //   let offset += 1
+    //   offset * 10
+    //   return offset
+    // }
+    // offset -10
+
+    
+  }
 }
+
+// 25 results
+// 2.5 pages
+// for loop?
 
 export default SimpleSelect
 
