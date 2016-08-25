@@ -1,9 +1,7 @@
-"use strict";
-
 const databaseName = 'bookstore'
-const connectionString = `postgres://${process.env.USER}@localhost:5432/${databaseName}`;
-const pgp = require('pg-promise')();
-const db = pgp(connectionString);
+const connectionString = `postgres://${process.env.USER}@localhost:5432/${databaseName}`
+const pgp = require('pg-promise')()
+const db = pgp(connectionString)
 
 import SimpleSelect from './models/simple_select'
 import SimpleJoin from './models/simple_join'
@@ -36,4 +34,18 @@ const Genre = Object.assign(
   genericFunctions( 'genres' )
 )
 
-export { Book, Genre }
+const User = Object.assign(
+  {
+    find: (email, password) => {
+      const fields = [ 'id', 'email', 'name', 'bio', 'img_url' ]
+      const where = [ {email}, {password} ]
+
+      return db.one( 
+        (new SimpleSelect( 'users', { where, fields } )).toString()
+      )
+    }
+  },
+  genericFunctions( 'users' )
+)
+
+export { Book, Genre, User }

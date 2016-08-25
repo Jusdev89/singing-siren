@@ -1,0 +1,15 @@
+extend ./layout
+
+block content
+  div.container.col-md-10
+    p= message
+  div.container.col-md-10
+    form(method='post', action='/auth/login')
+      div.form-group
+        label(for='email') Email
+        input(type='text', id='email', name='email', class='form-control')
+      div.form-group
+        label(for='password') Password
+        input(type='password', id='password', name='password', class='form-control')
+      div.form-group
+        button(type='submit', class='btn btn-default') Login
