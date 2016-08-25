@@ -128,3 +128,7 @@ select:not([multiple])  {
 .form-control{
   border-radius: 0;
 }
+
+.bookListImg{
+    width: 100%;
+}
