@@ -18,12 +18,11 @@ describe ( 'SimpleJoin', () => {
           fields: ['genres', 'book_genres.book_id'],
           join: ['book_genres'],
           where: [{ field_id: 'book_genres.book_id' }],
-          on: [ 'book_genres.genre_id', 'genres.id' ],
-          in: 1
+          on: [ 'book_genres.genre_id', 'genres.id' ]
         })
 
       expect( query.toString() ).toEqual(
-        `SELECT genres.*, book_genres.book_id FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id IN 1`
+        `SELECT genres.*, book_genres.book_id FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id`
       )
     })
 
@@ -32,12 +31,11 @@ describe ( 'SimpleJoin', () => {
           fields: ['genres'],
           join: ['book_genres'],
           where: [{ field_id: 'book_genres.book_id' }],
-          on: [ 'book_genres.genre_id', 'genres.id' ],
-          in: 1
+          on: [ 'book_genres.genre_id', 'genres.id' ]
         })
 
       expect( query.toString() ).toEqual(
-        `SELECT genres.* FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id IN 1`
+        `SELECT genres.* FROM genres JOIN book_genres ON genres.id = book_genres.genre_id WHERE book_genres.book_id`
       )
     })
 
@@ -46,12 +44,11 @@ describe ( 'SimpleJoin', () => {
           fields: ['books'],
           join: ['book_authors'],
           where: [{ field_id: 'book_authors.author_id' }],
-          on: [ 'book_authors.book_id', 'book.id' ],
-          in: 1
+          on: [ 'book_authors.book_id', 'book.id' ]
         })
 
       expect( query.toString() ).toEqual(
-        `SELECT books.* FROM books JOIN book_authors ON book.id = book_authors.book_id WHERE book_authors.author_id IN 1`
+        `SELECT books.* FROM books JOIN book_authors ON book.id = book_authors.book_id WHERE book_authors.author_id`
       )
     })
   })
