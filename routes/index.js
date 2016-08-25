@@ -1,5 +1,5 @@
 import express from 'express'
-import database, { Book , Join } from '../database'
+import database, { Book } from '../database'
 const router = express.Router()
 
 /* GET home page. */
