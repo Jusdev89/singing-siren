@@ -1,7 +1,29 @@
 extends ./layout.pug
 
 block content
-  div.container.col-md-10.col-sm-9.col-lg-10.col-xs-5
+  .container.col-md-2.col-sm-4.col-lg-2.col-xs-12
+    h3.smSearchtxt Search Books
+      form(action="/", method="get")
+        input.form-control(type="text", name="search_query", placeholder="Author, Title, Genre")
+        .form-group
+          br
+          label(for='sel1') Select Genre (Optional):
+          select#sel1.form-control
+            option Fantasy
+            option Sci Fi
+            option Romance
+            option Young Adult
+            option Comedy
+            option Space
+            option Aliens
+            option Strong Female Lead
+            option Dystopia
+            option Female Author
+            option Classic
+        div
+          br
+          input.btn.pull-right(type="submit", value="find")
+  div.container.col-md-10.col-sm-6.col-lg-10.col-xs-12
     div
       h2=book.title
       p=book.description
