@@ -1,12 +1,24 @@
 import express from 'express'
-import database, { Book } from '../database'
+import database, { Book, Search } from '../database'
 const router = express.Router()
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  console.log( 'USER DATA', req.user )
-  Book.all().then( books => res.render( 'index', { books } ))
-  //include dynamic rendering for admin/user pages
+router.get('/', (request, response, next) => {
+
+  const { query } = request
+ 
+  const page = query.page || 1
+  const size = query.size || 10
+
+  if( query.search_query === undefined ) {
+    Book.all( page, size )
+      .then( books => response.render( 'index', { books, page, size } ))
+      .catch( error => response.send({ error, message: error.message }))
+  } else {
+    Search.forBooks({ page, size, search_query: query.search_query })
+      .then( books => response.render( 'index', { books, page, size } ))
+      .catch( error => response.send({ error, message: error.message }))
+  }
 })
 
 router.get('/test', (req, res) => {

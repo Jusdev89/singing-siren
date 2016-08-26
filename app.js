@@ -12,6 +12,7 @@ import passport from './config/passport'
 import routes from './routes/index'
 import users from './routes/users'
 import auth from './routes/authentication'
+import books from './routes/books/book'
 
 const sessionConfig = {
   secret: 'blarg',
@@ -41,6 +42,7 @@ app.use( passport.session() )
 app.use('/', routes)
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/books', books)
 
 
 

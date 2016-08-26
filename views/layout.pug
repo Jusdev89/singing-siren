@@ -26,13 +26,7 @@ html
             br
             label(for='sel1') Select Genre:
             select#sel1.form-control
-              option 1
-          label.radio-inline
-            input(type='radio', name='optradio')
-            | Fiction
-          label.radio-inline
-            input(type='radio', name='optradio')
-            | Non-Fiction
+              option genres.genre
           div
             br
             input.btn.pull-right(type="submit", value="find")

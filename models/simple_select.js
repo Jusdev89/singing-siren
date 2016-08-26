@@ -9,10 +9,13 @@ class SimpleSelect {
     this.table = table
     this.filter = options.where || []
     this.fields = options.fields || []
+    this.page = parseInt( options.page || 1 )
+    this.size = parseInt( options.size || 10 )
+    this.offset = this.size * ( this.page - 1 )
   }
 
   toString() {
-    return `SELECT ${this.sqlFields()} FROM ${this.table}${this.where()}`
+    return `SELECT ${this.sqlFields()} FROM ${this.table}${this.where()} LIMIT ${this.size} OFFSET ${this.offset}`
   }
 
   sqlFields() {
@@ -34,35 +37,7 @@ class SimpleSelect {
       return ` WHERE ${clause.join( ' AND ' )}`
     }
   }
-
-  offset() {
-    //if total # of results is < 10 return result
-    //else return # of results 
-    //results / 10 = # of pages
-    //how get offset? (units - 1)*10
-    if( this.fields.length === 0 ) {
-      return ''
-    } else {
-
-
-
-      return ` LIMIT 10 OFFSET ${offset}`
-    }
-    // const resultTotal = results/10
-    // for ( i = 0, i <= resultTotal, i++){
-    //   let offset += 1
-    //   offset * 10
-    //   return offset
-    // }
-    // offset -10
-
-    
-  }
 }
-
-// 25 results
-// 2.5 pages
-// for loop?
 
 export default SimpleSelect
 

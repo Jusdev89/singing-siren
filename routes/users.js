@@ -8,9 +8,4 @@ router.get('/', (req, res, next) => {
   res.render( 'profile_page', { user })
 })
 
-
-// router.get('/:id', function(req, res, next) {
-//   res.render();
-// });
-
 module.exports = router;
