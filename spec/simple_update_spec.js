@@ -18,7 +18,7 @@ describe ( 'SimpleUpdate', () => {
       expect( () => new SimpleUpdate( 'books', 1, {} ) ).toThrow( 'At least one field is required' )
     })
   })
-
+ 
   describe( '#toString', () => {
     it( 'returns the correct UPDATE SQL statement', () => {
       const query = new SimpleUpdate( 'books', 1, {title: 'new title'} )

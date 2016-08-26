@@ -9,10 +9,13 @@ class SimpleSelect {
     this.table = table
     this.filter = options.where || []
     this.fields = options.fields || []
+    this.page = parseInt( options.page || 1 )
+    this.size = parseInt( options.size || 10 )
+    this.offset = this.size * ( this.page - 1 )
   }
 
   toString() {
-    return `SELECT ${this.sqlFields()} FROM ${this.table}${this.where()}`
+    return `SELECT ${this.sqlFields()} FROM ${this.table}${this.where()} LIMIT ${this.size} OFFSET ${this.offset}`
   }
 
   sqlFields() {

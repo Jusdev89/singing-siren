@@ -6,13 +6,18 @@ block content
       div.container
         div.col-md-10
           .col-md-2
-            img.bookListImg(src='http://bestanimations.com/Books/guy-man-reading-book-animation-1.gif')
+            img.bookListImg(src=book.img_url)
           .col-md-2
-            p=book.title
+            a(href="/books/"+book.id)=book.title
           .col-md-1
             p author
           .col-md-1
             p genres
           .col-md-6
             p=book.description
-            p Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? 
+    div.prevnext
+      div.prevnext
+        if page > 1
+          a(href="/?page="+(page-1)) Prev
+      div.prevnext
+        a(href="/?page="+(page+1)) Next
