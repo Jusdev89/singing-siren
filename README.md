@@ -17,14 +17,13 @@ Creating this web application will provide exposure to:
 ##Specifications
 
 - [X] Users can sign up and log into their account.  **100% complete**
-- [X] Admin users can add, delete, edit books into the system via an admin page. **100% complete**
+- [ ] Admin users can add, delete, edit books into the system via an admin page. **90% complete** We can add books, delete books, and we made progress on editing, but didn't complete in time.
 - [X] Books entered in the system are listed on the home page, in pages of 10 **100% complete**
 - [X] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page. **100% complete**
-- [ ] Users can refine search by genre & other methods. (faceted search) **95% complete**
-
+- [ ] Users can refine search by genre & other methods. (faceted search) **95% complete** We're *so close* to being done with this, we just couldn't get the bugs out in time :<
 
 - [X] Users can view book details on a book detail page, linked to from the listing or search pages. **100% complete**
-- [X] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions) **100% complete **
+- [X] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions) **100% complete**
 - [X] Test driven development for sql queries **100% complete**
 
 

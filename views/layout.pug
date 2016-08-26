@@ -12,22 +12,10 @@ html
     .col-md-10.col-sm-9.col.xs-12
       h1 The Singing Siren Bookstore
       h4 Science Fiction and Fantasy Books
-    .col-md-12.col-sm-12.col-xs-12
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
       ul.nav
         li
           a(href="/") Home
         li
           a(href="/auth/login") Log In
-    .col-md-2.col-sm-12.col-lg-2.col-xs-12
-      h3.smSearchtxt Search Books
-        form(action="/", method="get")
-          input.form-control(type="text", name="search_query", placeholder="Author, Title, Genre")
-          .form-group
-            br
-            label(for='sel1') Select Genre:
-            select#sel1.form-control
-              option genres.genre
-          div
-            br
-            input.btn.pull-right(type="submit", value="find")
     block content

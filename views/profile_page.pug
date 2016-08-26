@@ -1,13 +1,39 @@
 extends ./layout.pug
 
 block content
-  div.container.col-lg-10.col-md-10.col-sm-12.col-xs-12
+  .container.col-lg-2.col-md-2.col-sm-4.col-xs-12
+    h3.smSearchtxt Search Books
+      form(action="/", method="get")
+        input.form-control(type="text", name="search_query", placeholder="Author, Title, Genre")
+        .form-group
+          br
+          label(for='sel1') Select Genre (Optional):
+          select#sel1.form-control
+            option Fantasy
+            option Sci Fi
+            option Romance
+            option Young Adult
+            option Comedy
+            option Space
+            option Aliens
+            option Strong Female Lead
+            option Dystopia
+            option Female Author
+            option Classic
+        div
+          br
+          input.btn.pull-right(type="submit", value="find")
+  div.container.col-lg-10.col-md-10.col-sm-8.col-xs-12
     if user.admin === f
-      p Oh hey you're an admin! Congratulations!!!!!
-      p=user.name
-      p=user.bio
-      p=user.email
-      div.container.col-md-10
+      div.container.col-lg-8.col-md-8.col-sm-12.col-xs-12
+        div
+          img.img-circle.pull-right.evenSpaceGiver(src=user.img_url)
+          h3=user.name
+          p Status: Administrator
+        div
+          p=user.bio
+          p=user.email
+      div.container.col-lg-4.col-md-4.col-sm-12.col-xs-12
         h2 Insert a book
         form(method='post', action='/books')
           div.form-group

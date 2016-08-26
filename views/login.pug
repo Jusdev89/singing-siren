@@ -1,9 +1,33 @@
 extend ./layout
 
 block content
-  div.container.col-md-10.col-sm-9.col-lg-10.col-xs-5
-    p= message
-    form(method='post', action='/auth/login')
+  .container.col-lg-4.col-md-3.col-sm-4.col-xs-12
+    h3.smSearchtxt Search Books
+      form(action="/", method="get")
+        input.form-control(type="text", name="search_query", placeholder="Author, Title, Genre")
+        .form-group
+          br
+          label(for='sel1') Select Genre (Optional):
+          select#sel1.form-control
+            option Fantasy
+            option Sci Fi
+            option Romance
+            option Young Adult
+            option Comedy
+            option Space
+            option Aliens
+            option Strong Female Lead
+            option Dystopia
+            option Female Author
+            option Classic
+        div
+          br
+          input.btn.pull-right(type="submit", value="find")
+  div.container.col-lg-2.col-md-2.col-sm-1
+  div.container.col-lg-6.col-md-7.col-sm-7.col-xs-12
+    h4 Log Into Your Account
+    form.smSearchtxt.evenSpaceGiver.color(method='post', action='/auth/login')
+      //- h4 Log Into Your Account
       div.form-group
         label(for='email') Email
         input(type='text', id='email', name='email', class='form-control')
@@ -11,4 +35,4 @@ block content
         label(for='password') Password
         input(type='password', id='password', name='password', class='form-control')
       div.form-group
-        button(type='submit', class='btn btn-default') Login
+        button.btn.pull-right(type='submit', class='btn btn-default') login

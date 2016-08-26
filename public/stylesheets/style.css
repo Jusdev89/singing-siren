@@ -54,12 +54,13 @@ p, li, tbody {
   padding-top:.2em;
   display: flex;
 }
-.evenSpaceGiver{
-    padding:1em;
-}
 
 .spaceGiver div {
     flex-direction: column;
+}
+
+.evenSpaceGiver{
+    padding:1em;
 }
 
 .prevnext{
@@ -137,3 +138,11 @@ select:not([multiple])  {
     width: 100%;
 }
 
+.color{
+    background-color:#E5E5E5;
+}
+
+.img-circle{
+    width:14em;
+    height: 10em;
+}
