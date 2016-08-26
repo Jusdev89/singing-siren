@@ -1,5 +1,5 @@
 class SimpleInsert {
-  constructor (table,options={}){
+  constructor( table, options={} ){
     if( table === undefined  ) {
       throw 'Table parameter is required'
     } else if( typeof( table ) !== 'string' ) {
@@ -7,12 +7,15 @@ class SimpleInsert {
     }
 
     this.table = table
-    this.columns = options.columns || []
-    this.values = options.values || []
+
+    this.columns = Object.keys( options )
+    this.values = this.columns.map( key => `'${options[ key ]}'` )
   }
 
   toString(){
-    return `INSERT INTO ${this.insertInto()} VALUES ${this.insertValues()}`
+    const sql = `INSERT INTO ${this.insertInto()} VALUES ${this.insertValues()} RETURNING id`
+    console.log( sql )
+    return sql
   }
 
 

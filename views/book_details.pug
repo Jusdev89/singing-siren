@@ -1,7 +1,11 @@
 extends ./layout.pug
 
 block content
-  div.container.col-md-10
+  div.container.col-md-10.col-sm-9.col-lg-10.col-xs-5
     div
       h2=book.title
       p=book.description
+
+    if user.admin === f
+      form(action=`/books/delete/${book.id}`, method='get' )
+        button Delete

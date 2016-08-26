@@ -9,7 +9,7 @@ html
   body.container-fluid
     .col-md-2.col-sm-3.col-xs-6
       img.logo(src='/images/logo.png')
-    .col-md-10.col-sm-9.col.xs-6
+    .col-md-10.col-sm-9.col.xs-12
       h1 The Singing Siren Bookstore
       h4 Science Fiction and Fantasy Books
     .col-md-12.col-sm-12.col-xs-12
@@ -18,7 +18,7 @@ html
           a(href="/") Home
         li
           a(href="/auth/login") Log In
-    .col-md-2.col-sm-3.col-lg-2.col-xs-5
+    .col-md-2.col-sm-12.col-lg-2.col-xs-12
       h3.smSearchtxt Search Books
         form(action="/", method="get")
           input.form-control(type="text", name="search_query", placeholder="Author, Title, Genre")

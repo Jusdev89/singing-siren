@@ -6,14 +6,14 @@ const db = pgp(connectionString)
 import SimpleSelect from './models/simple_select'
 import SimpleJoin from './models/simple_join'
 import SimpleDelete from './models/simple_delete'
-
+import SimpleInsert from './models/simple_insert'
 
 const genericFunctions = tableName => {
 
   return {
     all: (page, size) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
     one: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
-    delete: id => db.one( ( new SimpleDelete( tableName, id ) ).toString() )
+    delete: id => db.none( ( new SimpleDelete( tableName, id ) ).toString() )
   }
 }
 
@@ -68,14 +68,28 @@ const Book = Object.assign(
         }
       ).toString(), [id])
   },
-  genericFunctions( 'books' )
+  genericFunctions( 'books' ),
+  {
+    insert: data => {
+      const { title, description, img_url, author, genre } = data
+
+      return db.one( ( new SimpleInsert( 'books', {title,description,img_url} )).toString() )
+        .then( result => {
+          const id = result.id
+
+          return Promise.all([
+            new Promise( (resolve, reject) => resolve(id) ),
+            db.none(`INSERT INTO book_authors(book_id, author_id) VALUES (${id}, ${author})`),
+            db.none(`INSERT INTO book_genres(book_id, genre_id) VALUES (${id}, ${genre})`)
+          ])
+        })
+        .then( results => {
+          return new Promise( (resolve, reject) => resolve( results[0] ))
+        })
+    }
+
+  }
 )
-
-// const insertBook = Object.assign(
-//   {
-
-//   }
-// )
 
 const Author = Object.assign(
   { },
@@ -84,7 +98,8 @@ const Author = Object.assign(
 
 const Genre = Object.assign( 
   {},
-  genericFunctions( 'genres' )
+  genericFunctions( 'genres' ),
+  { allGenres: () => db.any( (new SimpleSelect( 'genres', { size: 1000 } )).toString()) }
 )
 
 const User = Object.assign(

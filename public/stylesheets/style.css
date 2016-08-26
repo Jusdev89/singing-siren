@@ -54,6 +54,9 @@ p, li, tbody {
   padding-top:.2em;
   display: flex;
 }
+.evenSpaceGiver{
+    padding:1em;
+}
 
 .spaceGiver div {
     flex-direction: column;
@@ -100,6 +103,7 @@ p, li, tbody {
 .spaceGiverForm{
     padding:.5em;
 }
+
 
 .btn{
     background-color: #e0a618;

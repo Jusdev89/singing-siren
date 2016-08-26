@@ -1,17 +1,16 @@
 extends ./layout.pug
 
 block content
-  div.container.col-md-10.col-sm-9.col-lg-10.col-xs-5
+  div.container.col-lg-10.col-md-10.col-sm-12.col-xs-12
     for book in books
       div.container
         div.col-md-10
-          .col-md-2
-            img.bookListImg(src=book.img_url)
-          .col-md-2
+          .col-md-3.col-sm-3.col-xs-6.evenSpaceGiver
+            img.bookListImg.img-responsive(src=book.img_url)
+          .col-md-2.col-sm-2.col-xs-6.evenSpaceGiver
             a(href="/books/"+book.id)=book.title
-          .col-md-6
+          .col-md-7.col-sm-7.col-xs-12.evenSpaceGiver
             p=book.description
-          .col-md-1
     div.prevnext
       div.prevnext
         if page > 1
