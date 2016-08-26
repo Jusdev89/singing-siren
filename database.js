@@ -86,6 +86,16 @@ const Book = Object.assign(
         .then( results => {
           return new Promise( (resolve, reject) => resolve( results[0] ))
         })
+    }, 
+    update: data => {
+      const { id, title, description, img_url } = data
+
+      return db.one( ( new SimpleUpdate( 'books', id, { title, description, img_url } )).toString() )
+        .then( result => {
+
+          const id = result.id
+          return id
+        })
     }
 
   }

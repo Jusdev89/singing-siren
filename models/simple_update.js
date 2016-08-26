@@ -16,7 +16,7 @@ class SimpleUpdate {
   }
 
   toString() {
-    return `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id}`
+    return `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
   }
 
   updateFields() {
