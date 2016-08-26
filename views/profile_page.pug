@@ -2,12 +2,39 @@ extends ./layout.pug
 
 block content
   div.container.col-md-10
-    if user.admin == t
+    if user.admin === f
       p Oh hey you're an admin! Congratulations!!!!!
       p=user.name
       p=user.bio
       p=user.email
-    else if user.admin == f
+      div.container.col-md-8
+        h2 Insert a book
+        form(method='post', action='/auth/login')
+          div.form-group
+            label(for='title') Title
+            input(type='text', id='title', name='title', class='form-control')
+          div.form-group
+            label(for='description') Description
+            input(type='description', id='description', name='description', class='form-control')
+          div.form-group
+            label(for='img_url') Image Url
+            input(type='img_url', id='img_url', name='img_url', class='form-control')  
+          div.form-group
+            br
+            label(for='sel1') Select Author:
+            select#sel1.form-control
+              for author in authors
+                option(value=author.id)=author.name
+          div.form-group
+            br
+            label(for='sel1') Select Genre:
+            select#sel1.form-control
+              option scifi
+              //- for genre in genres
+              //-   option(value=genre.id)=genres.title
+          div.form-group
+            button(type='submit', class='btn btn-default') Login
+    else if user.admin === f
       p Oh hey, i guess it's nice to see you again, lowly user.
       p=user.name
       p=user.bio

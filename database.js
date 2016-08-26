@@ -18,8 +18,6 @@ const genericFunctions = tableName => {
 }
 
 //paganation
-//
-
 const Search = {
   forBooks: options => {
     const variables = []
@@ -73,10 +71,15 @@ const Book = Object.assign(
   genericFunctions( 'books' )
 )
 
-const insertBook = Object.assign(
-  {
+// const insertBook = Object.assign(
+//   {
 
-  }
+//   }
+// )
+
+const Author = Object.assign(
+  { },
+  genericFunctions( 'authors' )
 )
 
 const Genre = Object.assign( 
@@ -100,4 +103,6 @@ const User = Object.assign(
 
 
 
-export { Book, Genre, User, Search }
+
+
+export { Book, Genre, User, Search, Author }

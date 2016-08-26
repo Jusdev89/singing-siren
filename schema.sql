@@ -56,7 +56,8 @@ CREATE TABLE users
   email VARCHAR(255) NOT NULL, -- is there an email option?
   password VARCHAR(255) NOT NULL,
   bio TEXT NOT NULL,
-  img_url VARCHAR(255) NOT NULL
+  img_url VARCHAR(255) NOT NULL,
+  admin BOOLEAN NOT NULL
 );
 
 DROP TABLE IF EXISTS user_roles;
@@ -64,13 +65,6 @@ CREATE TABLE user_roles
 (
   role_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL
-);
-
-DROP TABLE IF EXISTS roles;
-CREATE TABLE roles
-(
-  id SERIAL PRIMARY KEY,
-  admin BOOLEAN
 );
 
 INSERT INTO
@@ -109,7 +103,7 @@ Each is searching--Lyra for the meaning of Dark Matter, Will for his missing fat
 
   (
     'Dune', 
-    'Set in the far future amidst a sprawling feudal interstellar empire where planetary dynasties are controlled by noble houses that owe an allegiance to the imperial House Corrino, Dune tells the story of young Paul Atreides (the heir apparent to Duke Leto Atreides and heir of House Atreides) as he and his family accept control of the desert planet Arrakis, the only source of the 'spice' melange, the most important and valuable substance in the cosmos. The story explores the complex, multi-layered interactions of politics, religion, ecology, technology, and human emotion as the forces of the empire confront each other for control of Arrakis.', 
+    'Set in the far future amidst a sprawling feudal interstellar empire where planetary dynasties are controlled by noble houses that owe an allegiance to the imperial House Corrino, Dune tells the story of young Paul Atreides (the heir apparent to Duke Leto Atreides and heir of House Atreides) as he and his family accept control of the desert planet Arrakis, the only source of the ''spice'' melange, the most important and valuable substance in the cosmos. The story explores the complex, multi-layered interactions of politics, religion, ecology, technology, and human emotion as the forces of the empire confront each other for control of Arrakis.', 
     'https://d2arxad8u2l0g7.cloudfront.net/books/1434908555l/234225.jpg'
   ),
 
@@ -157,7 +151,7 @@ Each is searching--Lyra for the meaning of Dark Matter, Will for his missing fat
 
 
 INSERT INTO 
-  genres (genre)
+  genres (title)
 VALUES 
   ('Young Adult'),
   ('Sci Fi'),
@@ -172,7 +166,7 @@ VALUES
   ('Classic');
 
 INSERT INTO 
-  users (name, bio, email, password, img_url)
+  users (name, bio, email, password, img_url, admin)
 VALUES  
   ('Some Guy', 'So much bios!', 'user1@email.com', 'password', 'www.thing.com', 'TRUE'),
   ('user2', 'So much bios!', 'email@email.com', 'password', 'www.thing.com', 'FALSE'),
@@ -421,7 +415,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Neuromancer'
-AND authors.author='William Gibson';
+AND authors.name='William Gibson';
 
 --('1984'),
 INSERT INTO book_authors
@@ -429,28 +423,28 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='1984'
-AND authors.author='George Orwell';
+AND authors.name='George Orwell';
 
 INSERT INTO book_authors
 SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Hyperion'
-AND authors.author='Dan Simmons';
+AND authors.name='Dan Simmons';
 
 INSERT INTO book_authors
 SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Fahrenheit 451'
-AND authors.author='Ray Bradbury';
+AND authors.name='Ray Bradbury';
 
 INSERT INTO book_authors
 SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='The Left Hand of Darkness'
-AND authors.author='Ursula K Le Guin';
+AND authors.name='Ursula K Le Guin';
 
 --kushie's dart written jacqueline carey
 INSERT INTO book_authors
@@ -458,7 +452,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Kushiel''s Dart'
-AND authors.author='Jacqueline Carey';
+AND authors.name='Jacqueline Carey';
 
 --Good Omens was written by Terry Prachett
 INSERT INTO book_authors
@@ -466,7 +460,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Good Omens'
-AND authors.author='Terry Prachett';
+AND authors.name='Terry Prachett';
 
 --Good Omens was written by Terry Prachett
 INSERT INTO book_authors
@@ -474,7 +468,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Good Omens'
-AND authors.author='Neil Gaiman';
+AND authors.name='Neil Gaiman';
 
 
 --white fang was written by jack london
@@ -483,7 +477,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='White Fang'
-AND authors.author='Jack London';
+AND authors.name='Jack London';
 
 
 --Ender's Game was written by orson scott card
@@ -492,7 +486,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Ender''s Game'
-AND authors.author='Orson Scott Card';
+AND authors.name='Orson Scott Card';
 
 --the golden compass was written by philip pullman
 INSERT INTO book_authors
@@ -500,7 +494,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='The Golden Compass'
-AND authors.author='Philip Pullman';
+AND authors.name='Philip Pullman';
 
 --the golden compass was written by philip pullman
 INSERT INTO book_authors
@@ -508,7 +502,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='The Subtle Knife'
-AND authors.author='Philip Pullman';
+AND authors.name='Philip Pullman';
 
 --the golden compass was written by philip pullman
 INSERT INTO book_authors
@@ -516,7 +510,7 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='Dune'
-AND authors.author='Frank Herbert';
+AND authors.name='Frank Herbert';
 
 --a scanner darkley was written by philip k dick
 INSERT INTO book_authors
@@ -524,4 +518,4 @@ SELECT books.id, authors.id
 FROM books
 CROSS JOIN authors
 WHERE books.title='A Scanner Darkly'
-AND authors.author='Philip K Dick';
+AND authors.name='Philip K Dick';
