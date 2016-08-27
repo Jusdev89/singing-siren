@@ -59,7 +59,7 @@ const Search = {
 
 const Book = Object.assign(
   {
-    getAuthors: id => db.many(new SimpleJoin( 'books',  
+    getAuthors: id => db.many(new SimpleJoin( 'books',
         {
           fields: [ 'books' ],
           join: ['book_authors'],
@@ -86,12 +86,12 @@ const Book = Object.assign(
         .then( results => {
           return new Promise( (resolve, reject) => resolve( results[0] ))
         })
-    }, 
+    },
     update: data => {
-      const { id, title, description, img_url } = data
-
-      return db.one( ( new SimpleUpdate( 'books', id, { title, description, img_url } )).toString() )
+      const { id, title, description } = data
+      return db.one( ( new SimpleUpdate( 'books', id, { title, description })).toString() )
         .then( result => {
+          console.log('Result', result)
 
           const id = result.id
           return id
@@ -106,7 +106,7 @@ const Author = Object.assign(
   genericFunctions( 'authors' )
 )
 
-const Genre = Object.assign( 
+const Genre = Object.assign(
   {},
   genericFunctions( 'genres' ),
   { allGenres: () => db.any( (new SimpleSelect( 'genres', { size: 1000 } )).toString()) }
@@ -118,7 +118,7 @@ const User = Object.assign(
       const fields = [ 'id', 'email', 'name', 'bio', 'img_url', 'admin' ]
       const where = [ {email}, {password} ]
 
-      return db.one( 
+      return db.one(
         (new SimpleSelect( 'users', { where, fields } )).toString()
       )
     }

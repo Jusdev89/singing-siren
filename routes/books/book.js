@@ -31,4 +31,14 @@ router.post( '/', (request, response) => {
     .catch( error => response.send({ error, message: error.message }))
 })
 
+router.post( '/update', (request, response) => {
+  const body = { id: '1', title: 'blah', description: 'blah' }
+  console.log('Update data', body);
+
+  Book.update( body )
+    .then( id => response.redirect( `/books/${body.id}` ))
+    .catch( error => response.json({ error, message: error.message }))
+})
+
+
 module.exports = router;

@@ -1,5 +1,5 @@
 class SimpleUpdate {
-  constructor( table, id, fields=[] ){
+  constructor( table, id, fields={} ){
     if( table === undefined  ) {
       throw 'Table parameter is required'
     } else if( typeof( table ) !== 'string' ) {
@@ -16,7 +16,7 @@ class SimpleUpdate {
   }
 
   toString() {
-    return `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
+    return `UPDATE ${this.table} SET (${this.updateFields()}) WHERE id=${this.id} RETURNING id`
   }
 
   updateFields() {
